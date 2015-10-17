@@ -8,6 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,24 +19,31 @@
   </head>
   <body>
   
-  <div id="point" style="border: 2px solid red; border-radius: 1px; position: absolute"></div>
+  <div id="point"></div>
   <div class="container">
     <div class="row">
 
       <!-- Menu -->
       <div class="col-lg-3">
         <div class="list-group table-of-contents">
-          <a class="list-group-item" href="#navbar">Navbar</a>
-          <a class="list-group-item" href="#buttons">Buttons</a>
-          <a class="list-group-item" href="#typography">Typography</a>
-          <a class="list-group-item" href="#tables">Tables</a>
-          <a class="list-group-item" href="#forms">Forms</a>
-          <a class="list-group-item" href="#navs">Navs</a>
-          <a class="list-group-item" href="#indicators">Indicators</a>
-          <a class="list-group-item" href="#progress-bars">Progress bars</a>
-          <a class="list-group-item" href="#containers">Containers</a>
-          <a class="list-group-item" href="#dialogs">Dialogs</a>
+          <a class="list-group-item" id="test" href="#navbar">
+            <form class="form-horizontal">
+                <div class="form-group">
+                  <label for="inputPassword" class="col-lg-4 control-label">Password</label>
+                  <div class="col-lg-8">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox"> Checkbox
+                      </label>
+                    </div>
+                  </div>
+                </div>
+            </form>
+
+          </a>
         </div>
+        
       </div>
 
 
@@ -52,6 +60,7 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Bootstrap JavaScript -->
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="assets/js/interact.min.js"></script>
     <script src="assets/js/grid.min.js"></script>
     <script src="assets/js/report.js"></script>
   </body>

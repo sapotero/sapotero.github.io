@@ -1,0 +1,11 @@
+#point {
+  border: 2px solid red;
+  border-radius: 1px;
+  position: absolute;
+}
+
+#test {
+  background-color: #fff;
+  border-radius: 4px;
+  z-index: 100;
+}
