@@ -46,8 +46,14 @@ function getCoordinates (event) {
   console.log(x, y, '->', gridIndex);
 };
 
+// document.getElementById('print').addEventListener("click", function(event){
+//   window.location = canvas.toDataURL("image/png");
+// });
+
+
 // interact.js
 var test  = document.getElementById("test"), x = 0, y = 0;
+
 interact(test)
   .draggable({
     snap: {

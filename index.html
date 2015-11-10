@@ -7,7 +7,7 @@
     <title>Title Page</title>
 
     <!-- Bootstrap CSS -->
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/2.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -23,45 +23,55 @@
   <div class="container">
     <div class="row">
 
+
       <!-- Menu -->
-      <div class="col-lg-3">
-        <div class="list-group table-of-contents">
-          <a class="list-group-item" id="test" href="#navbar">
-            <form class="form-horizontal">
-                <div class="form-group">
-                  <label for="inputPassword" class="col-lg-4 control-label">Password</label>
-                  <div class="col-lg-8">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> Checkbox
-                      </label>
-                    </div>
-                  </div>
-                </div>
-            </form>
-
-          </a>
-        </div>
-        
-      </div>
-
 
       <!-- Report -->
-      <div class="col-lg-9">
+      <!-- <div class="span-9">
         <canvas id="report" onmousemove="getCoordinates(event)"></canvas>
-      </div>
+      </div> -->
+
+      <table class="table">
+        <thead>
+          <!--
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+          </tr>
+          -->
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+      <button id="cellFabrick" href="#" class="btn" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." title="" data-original-title="Popover on top">Large button</button>
+
 
     </div>
   </div>
 
 
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    
     <!-- Bootstrap JavaScript -->
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="assets/js/interact.min.js"></script>
-    <script src="assets/js/grid.min.js"></script>
-    <script src="assets/js/report.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    
+    <!-- jQuery JavaScript Library v1.9.1
+     bootstrap.js v2.3.2
+     Bootstrap v2.3.0 -->
+
+
+
+    <!-- <script src="assets/js/interact.min.js"></script> -->
+    <!-- <script src="assets/js/grid.min.js"></script> -->
+    <!-- <script src="assets/js/report.js"></script> -->
+    <script type="text/javascript">
+    $('#cellFabrick').popover({placement: 'bottom'})
+    </script>
+
+    <script src="assets/js/cell.js"></script>
   </body>
 </html>
