@@ -1,67 +1,23 @@
-<!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title Page</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <div id="point"></div>
-  <div class="container">
-    <div class="row">
-
-      <!-- Menu -->
-      <div class="col-lg-3">
-        <div class="list-group table-of-contents">
-          <a class="list-group-item" id="test" href="#navbar">
-            <form class="form-horizontal">
-                <div class="form-group">
-                  <label for="inputPassword" class="col-lg-4 control-label">Password</label>
-                  <div class="col-lg-8">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> Checkbox
-                      </label>
-                    </div>
-                  </div>
-                </div>
-            </form>
-
-          </a>
-        </div>
-        
-      </div>
-
-
-      <!-- Report -->
-      <div class="col-lg-9">
-        <canvas id="report" onmousemove="getCoordinates(event)"></canvas>
-      </div>
-
-    </div>
-  </div>
-
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- Bootstrap JavaScript -->
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="assets/js/interact.min.js"></script>
-    <script src="assets/js/grid.min.js"></script>
-    <script src="assets/js/report.js"></script>
-  </body>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/elusive-icons.css"> 
+  
+  <script src="./js/shared/requestAnimFrame.js"></script>
+  <script src="./js/pixi.js"></script>
+  <script src="./js/shared/webfont.min.js"></script>
+  <script src="./js/shared/audio.js"></script>
+</head>
+<body>
+  test
+  <div id="player"></div>
+  <script src="./js/cells.js"></script>
+</body>
 </html>
