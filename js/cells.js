@@ -14,32 +14,26 @@ function initPlayer(){
   var PIXI_WIDTH = 900;
   var PIXI_HEIGHT = 100;
 
-  var circles = [];
-  for(var i = 0; i < 128; i++) {
-    circles[i] = {x: (window.innerWidth / 128) * i,y: window.innerHeight / 2};
-  }
-  var graphics = new PIXI.Graphics();
-
   var stage = new PIXI.Container();
   var renderer = new PIXI.WebGLRenderer(1, 1,{
     antialiasing : true,
     transparent  : true,
     resolution   : 1
   });
-  renderer.resize(window.innerWidth, window.innerHeight);
+  renderer.resize(PIXI_WIDTH, PIXI_HEIGHT);
 
   document.querySelector('#player').appendChild(renderer.view);
 
 
   var buttonPlayWrapper = new PIXI.Graphics();
   buttonPlayWrapper.beginFill(0xacacac);
-  buttonPlayWrapper.drawCircle(100, 50,27);
+  buttonPlayWrapper.drawCircle(100, Math.floor(PIXI_HEIGHT/2),27);
   buttonPlayWrapper.endFill();
   buttonPlayWrapper.alpha = 0.5;
 
   var buttonPlay = new PIXI.Graphics();
   buttonPlay.beginFill(0xfcfcfc);
-  buttonPlay.drawCircle(100, 50, 25 );
+  buttonPlay.drawCircle(100, Math.floor(PIXI_HEIGHT/2), Math.floor(PIXI_HEIGHT/4) );
   buttonPlay.endFill();
 
   var buttonPlayIcon = new PIXI.Text('\uf1c7', { 
@@ -53,7 +47,7 @@ function initPlayer(){
 
   var forward = new PIXI.Graphics();
   forward.beginFill(0x000000);
-  forward.drawCircle(151, 50, 25-5);
+  forward.drawCircle(151, Math.floor(PIXI_HEIGHT/2), Math.floor(PIXI_HEIGHT/4)-5);
   forward.endFill();
   forward.alpha = 0.0;
 
@@ -78,7 +72,7 @@ function initPlayer(){
 
   var backward = new PIXI.Graphics();
   backward.beginFill(0x000000);
-  backward.drawCircle(41, 50, 25-5);
+  backward.drawCircle(41, Math.floor(PIXI_HEIGHT/2), Math.floor(PIXI_HEIGHT/4)-5);
   backward.endFill();
   backward.alpha = 0.0;
 
@@ -113,7 +107,7 @@ function initPlayer(){
   buttonPlay.interactive = true;
   buttonPlay.buttonMode = true;
 
-  buttonPlay.hitArea = new PIXI.Circle(100, 50, 25 );
+  buttonPlay.hitArea = new PIXI.Circle(100, Math.floor(PIXI_HEIGHT/2), Math.floor(PIXI_HEIGHT/4) );
 
   buttonPlay.mouseover = function(mouseData) {
     buttonPlayWrapper.alpha = 0.75;
@@ -177,81 +171,16 @@ function initPlayer(){
   buttonPlayWrapper.filters = [ dropShadowFilter, strongBlurFilter ];
   buttonPlay.filters = [weakBlurFilter];
 
-  stage.addChild(buttonPlayWrapper, buttonPlay, buttonPlayIcon, forward, forwardIcon, backward, backwardIcon, graphics );
+  stage.addChild(buttonPlayWrapper, buttonPlay, buttonPlayIcon, forward, forwardIcon, backward, backwardIcon );
 
   requestAnimFrame(animate);
 
   function animate() {
 
-    graphics.clear();
-
-    for(var i = 0; i < circles.length; i++) {
-      if (i % 2 == 0) {
-          graphics.beginFill( 0xcccccc);
-      } else {
-      graphics.beginFill(0xffffff);
-      }
-      graphics.drawCircle(circles[i].x, circles[i].y, 2);
-    }
-
-    if ( audio ) {
-      audio.data.analyser.getByteFrequencyData(audio.data.buffer_array);
-    
-      for (var i = 0; i < audio.data.buffer_length; i++) {
-        circles[i].x = (window.innerWidth / 128) * i;
-        circles[i].y += ((((PIXI_HEIGHT /2 - (audio.data.buffer_array[i] / 2)) - circles[i].y) + ((audio.data.buffer_array[i] * 2)))) / 1.5;
-      }
-    }
-
     requestAnimFrame(animate);
     renderer.render(stage);
   }
 }
-
-
-
-// audio
-var audio = false;
-
-var audio = {
-  ctx: new AudioContext(),
-  sound: {
-    url: "./mp3/song.mp3a",
-    loop: true
-  },
-  request: new XMLHttpRequest(),
-  data: {}
-}
-
-audio.sound.source = audio.ctx.createBufferSource();
-audio.sound.volume = audio.ctx.createGain();
-audio.sound.panner = audio.ctx.createPanner();
-audio.data.analyser = audio.ctx.createAnalyser();
-
-audio.request.open("GET", audio.sound.url, true);
-audio.request.responseType = "arraybuffer";
-audio.request.onload = function (e) {
-  audio.ctx.decodeAudioData(this.response, function onSuccess (buffer) {
-    audio.sound.buffer = buffer;
-    audio.sound.source.buffer = audio.sound.buffer;
-    audio.sound.source.start(0);
-  },function onError (error) {
-    alert(error);   
-  });
-};
-audio.request.send();
-
-audio.sound.source.connect(audio.sound.volume);
-audio.sound.volume.connect(audio.sound.panner);
-audio.sound.volume.connect(audio.data.analyser);
-audio.sound.panner.connect(audio.ctx.destination);
-// audio.sound.source.loop = true;
-audio.sound.panner.setPosition(0,0,1);
-
-audio.data.analyser.fftSize = 256;
-audio.data.buffer_length = audio.data.analyser.frequencyBinCount;
-audio.data.buffer_array = new Uint8Array(audio.data.buffer_length);
-audio.data.analyser.getByteFrequencyData(audio.data.buffer_array);
 
 // PIXI.loader.add([
 //   {
